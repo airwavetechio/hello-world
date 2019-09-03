@@ -7,8 +7,8 @@ spec:
     app: airwavetech-helloworld
   ports:
     - protocol: TCP
-      port: 5000
-      targetPort: 5001
+      port: 4999
+      targetPort: 4998
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -29,5 +29,8 @@ spec:
       containers:
       - name: hello-world
         image: airwavetechio/hello-world
+        env:
+        - name: "PORT"
+          value: "4998"
         ports:
-        - containerPort: 5000
+        - containerPort: 4998
