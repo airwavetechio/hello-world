@@ -9,3 +9,25 @@ spec:
     - protocol: TCP
       port: 5000
       targetPort: 5001
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airwavetechio-hello-world-deployment
+  labels:
+    app: airwavetech-helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: airwavetech-helloworld
+  template:
+    metadata:
+      labels:
+        app: airwavetech-helloworld
+    spec:
+      containers:
+      - name: hello-world
+        image: airwavetechio/hello-world
+        ports:
+        - containerPort: 5000
