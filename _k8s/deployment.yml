@@ -22,3 +22,16 @@ spec:
           value: "4998"
         ports:
         - containerPort: 4998
+          name: liveness-port
+        livenessProbe:
+          httpGet:
+            path: /
+            port: liveness-port
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: liveness-port
+          initialDelaySeconds: 3
+          periodSeconds: 5
