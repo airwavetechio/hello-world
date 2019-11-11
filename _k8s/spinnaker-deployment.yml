@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: airwavetech-helloworld-svc
+  labels:
+    app: airwavetech-helloworld
+spec:
+  ports:
+  - name: http
+    port: 4999
+    targetPort: 4998
+  selector:
+    app: airwavetech-helloworld
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airwavetechio-hello-world-deployment
+  labels:
+    app: airwavetech-helloworld
+  namespace: '${ parameters.namespace }'
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  replicas: 1
+  selector:
+    matchLabels:
+      app: airwavetech-helloworld
+  template:
+    metadata:
+      labels:
+        app: airwavetech-helloworld
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    spec:
+      imagePullSecrets:
+      - name: dockerhub
+      containers:
+      - image: airwavetechio/hello-world:${ parameters.dockertag } # possible artifact
+        name: hello-world
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "10m"
+            memory: "25Mi"
+          requests:
+            cpu: "10m"
+            memory: "25Mi"
+        env:
+        - name: "PORT"
+          value: "4998"
+        ports:
+        - containerPort: 4998
+          name: liveness-port
+        livenessProbe:
+          httpGet:
+            path: /
+            port: liveness-port
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: liveness-port
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        # envFrom:
+        # - configMapRef:
+        #     name: airwave-hello-world
+      restartPolicy: Always
