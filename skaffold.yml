@@ -1,0 +1,9 @@
+apiVersion: skaffold/v1
+kind: Config
+build:
+  artifacts:
+  - image: airwavetechio/hello-world
+deploy:
+  kubectl:
+    manifests:
+      - _k8s/deployment.yml
