@@ -3,6 +3,12 @@ kind: Config
 build:
   artifacts:
   - image: airwavetechio/hello-world
+  local:
+    push: true
+  tagPolicy:
+    dateTime:
+      format: "2006-01-02_15-04-05.999_MST"
+      timezone: "America/Los_Angeles"
 deploy:
   kubectl:
     manifests:
