@@ -6,3 +6,5 @@ This hello world application is a node app that has been "dockerized". The purpo
 * An application used for Kubernetes deployments and testing
 * Istio ingress using minkube
 
+## Build locally
+```docker build -t airwavetechio\hello-world:<tag>```

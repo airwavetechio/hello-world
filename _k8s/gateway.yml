@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: airwavetech-helloworld-gateway
+  namespace: istio-system
 spec:
   selector:
     istio: ingressgateway # use Istio default gateway implementation
@@ -21,7 +22,7 @@ spec:
   hosts:
   - "*"
   gateways:
-  - airwavetech-helloworld-gateway
+  - airwavetech-helloworld-gateway.istio-system.svc.cluster.local
   http:
   - match:
     - uri:

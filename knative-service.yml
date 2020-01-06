@@ -1,0 +1,13 @@
+apiVersion: serving.knative.dev/v1 # Current version of Knative
+kind: Service
+metadata:
+  name: airwavetech-helloworld # The name of the app
+  namespace: airwave-deploy # The namespace the app will use
+spec:
+  template:
+    spec:
+      containers:
+        - image: airwavetechio/hello-world:knative_0.1 # The URL to the image of the app
+          env:
+            - name: AIRWAVE_HW_PORT # The environment variable printed out by the sample app
+              value: "4998"

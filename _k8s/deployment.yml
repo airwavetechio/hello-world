@@ -32,9 +32,9 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: airwavetechio/hello-world
+        image: airwavetechio/hello-world:knative_0.1
         env:
-        - name: "PORT"
+        - name: "AIRWAVE_HW_PORT"
           value: "4998"
         ports:
         - containerPort: 4998
