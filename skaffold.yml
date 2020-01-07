@@ -2,7 +2,7 @@ apiVersion: skaffold/v1
 kind: Config
 build:
   artifacts:
-  - image: airwavetechio/hello-world
+  - image: airwavetechio/hello-world:knative_0.1
   local:
     push: true
   tagPolicy:

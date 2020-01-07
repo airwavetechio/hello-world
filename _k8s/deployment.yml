@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: airwavetech-helloworld-svc
+  namespace: airwave-deploy
   labels:
     app: airwavetech-helloworld
 spec:
@@ -16,6 +17,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: airwavetechio-hello-world-deployment
+  namespace: airwave-deploy
   labels:
     app: airwavetech-helloworld
 spec:
@@ -32,9 +34,9 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: airwavetechio/hello-world
+        image: airwavetechio/hello-world:knative_0.1
         env:
-        - name: "PORT"
+        - name: "AIRWAVE_HW_PORT"
           value: "4998"
         ports:
         - containerPort: 4998
