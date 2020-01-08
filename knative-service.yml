@@ -8,6 +8,8 @@ spec:
     spec:
       containers:
         - image: airwavetechio/hello-world:knative_0.1 # The URL to the image of the app
+          ports:
+            - containerPort: 4998
           env:
             - name: AIRWAVE_HW_PORT # The environment variable printed out by the sample app
               value: "4998"
