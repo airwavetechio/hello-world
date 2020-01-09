@@ -9,7 +9,19 @@ spec:
       containers:
         - image: airwavetechio/hello-world:knative_0.1 # The URL to the image of the app
           ports:
-            - containerPort: 4998 # Tells the gateway which port will be opened
+          - containerPort: 4998 # Port to route to
+          livenessProbe:
+            httpGet:
+              path: /
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+            initialDelaySeconds: 3
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 60
           env:
             - name: AIRWAVE_HW_PORT # The environment variable printed out by the sample app
               value: "4998"
