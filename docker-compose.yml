@@ -1,0 +1,9 @@
+version: "3"
+services:
+  airwavetech:
+    build: ./
+    image: airwavetechio/hello-world
+    ports: 
+      - "4999:4999"
+    environment:
+      - AIRWAVE_HW_PORT=4999

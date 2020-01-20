@@ -9,12 +9,11 @@ services:
 - docker
 before_install:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-- docker build -t ${DOCKER_USERNAME}/${APPNAME}:${VERSION} .
 install:
-- true
+- docker-compose up --build -d
 script:
-- true
+- curl http://localhost:4999
 after_script:
-- docker push airwavetechio/${APPNAME}:${VERSION}
-- if [ "$TRAVIS_BRANCH" == "master" ]; then docker tag airwavetechio/${APPNAME}:${VERSION}
-  airwavetechio/${APPNAME}:latest && docker push airwavetechio/${APPNAME}:latest; fi;
+- docker-compose down
+- if [ "$TRAVIS_BRANCH" == "master" ]; then docker push airwavetechio/${APPNAME}:latest; fi;
+- docker tag airwavetechio/${APPNAME}:latest airwavetechio/${APPNAME}:${VERSION} && docker push airwavetechio/${APPNAME}:${VERSION}
