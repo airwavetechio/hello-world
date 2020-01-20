@@ -14,6 +14,7 @@ install:
 script:
 - set -e
 - apt-get install dos2unix
+- ls -l
 - chmod +x ./test.sh
 - ./test.sh
 after_script:
