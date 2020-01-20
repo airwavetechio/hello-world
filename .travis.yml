@@ -13,9 +13,7 @@ install:
 - docker-compose up --build -d
 script:
 - set -e
-- ls -l
 - chmod +x ./test.sh
-- ls -l
 - ./test.sh
 after_script:
 - docker-compose down
