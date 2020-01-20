@@ -13,7 +13,8 @@ install:
 - docker-compose up --build -d
 script:
 - set -e
-- chmod +x ./test.sh && dos2unix ./test.sh
+- apt-get install dos2unix
+- chmod +x ./test.sh
 - ./test.sh
 after_script:
 - docker-compose down
