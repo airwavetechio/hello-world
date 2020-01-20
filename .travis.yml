@@ -19,3 +19,5 @@ after_script:
 - docker-compose down
 - if [ "$TRAVIS_BRANCH" == "master" ]; then docker push airwavetechio/${APPNAME}:latest; fi;
 - docker tag airwavetechio/${APPNAME}:latest airwavetechio/${APPNAME}:${VERSION} && docker push airwavetechio/${APPNAME}:${VERSION}
+addons:
+  hostname: airwavetech-vm
