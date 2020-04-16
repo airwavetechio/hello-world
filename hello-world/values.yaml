@@ -1,0 +1,2 @@
+# the port our server is going to listen on
+airwaveHWPort: 4998
