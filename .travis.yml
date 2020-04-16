@@ -2,7 +2,6 @@ sudo: required
 dist: trusty
 env:
   global:
-#  - TRAVIS_SECURE_ENV_VARS=true
   - VERSION="${TRAVIS_BRANCH}_`date +%Y%m%d`_${TRAVIS_BUILD_NUMBER}"
   - APPNAME=hello-world
 services:
@@ -14,8 +13,13 @@ install:
 script:
 - set -e
 - chmod +x ./test.sh
-- ./test.sh
+- "./test.sh"
 after_script:
 - docker-compose down
-- if [ "$TRAVIS_BRANCH" == "master" ]; then docker push airwavetechio/${APPNAME}:latest; fi;
-- docker tag airwavetechio/${APPNAME}:latest airwavetechio/${APPNAME}:${VERSION} && docker push airwavetechio/${APPNAME}:${VERSION}
+- if [ "$TRAVIS_BRANCH" == "master" ]; then docker push airwavetechio/${APPNAME}:latest;
+  fi;
+- docker tag airwavetechio/${APPNAME}:latest airwavetechio/${APPNAME}:${VERSION} &&
+  docker push airwavetechio/${APPNAME}:${VERSION}
+notifications:
+  slack:
+    secure: ThwLZzHJtq1xP4BSvj3kDFEUkyxCXukZEJJ4ZuxmxmKt/SH/daWG0ncDFEm7FrXmyoA0/hUrBqTboYujoTFhknFwmuSR83QwcdLW97LtxOrYiSUtXYz9oApsiqugvtbVco0DJyaEsAKEAy1Uegwanr3H64FPn9/Vl2XHj+rlVjbFBchhGFPZWzUb0wMnb5sqswee6p/LlX9R9ezRSByPPL24D+zzVaM/8zCgs5E7euMDzsbs5IMcCJAWKS7sMzQGUz0NPMGSX77lvAcVOy8gE6QCrcDsR0Hls0QPMcp6CtXWCIMGRimLSXYfrB9qveZRif9BCrNrHcSiL1lh9NqVLMVRhgBdJP3hmhNAI53WWPtHBYpaytcPlNRnYqaGaf1KNXG8vGqyCU8z+pUVoQSHnNnGWXUY7a2pRTu2lsUgRX+1eOlsVoVni9nkfG6zjlTugPKzGeUxuh2Q/ueTIrw1Gtp+/g5IULrNrcDMe4xAY+aNxZEf27xm1Q34or90skhgsbzzFZvi22T3i7aoX1A2Jabn9+gkVoii4+iAxKBVK5DYpffhRyvnu+BJChPbobFh2fAIg0r3EGd7Arq1xNCnpFyslKyj3mbJLSSFc3PwFy0tvitSnivDXbkw6fgMAV84xSYuP8KGemlsyf8wAivFk0QY6hWevx/2OXeQKyFt0iY=
