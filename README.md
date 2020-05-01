@@ -20,4 +20,5 @@ export GHUSER=githubusername
 fluxctl install --git-user=${GHUSER} --git-email=${GHUSER}@users.noreply.github.com --git-url=git@github.com:${GHUSER}/hello-world --git-path=flux --namespace=flux | kubectl apply -f -
 fluxctl identity --k8s-fwd-ns flux
 Then copy the deploy key to your repo
+
 ```
