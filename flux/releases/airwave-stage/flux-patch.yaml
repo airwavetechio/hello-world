@@ -1,11 +1,15 @@
+resources:
+  - ./../base
 apiVersion: v1
 kind: Service
 metadata:
   name: airwavetech-helloworld-svc
   namespace: airwave-stage
 ---
-  apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: airwavetechio-hello-world-deployment
-    namespace: airwave-stage
+resources:
+  - ./../base
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airwavetechio-hello-world-deployment
+  namespace: airwave-stage
