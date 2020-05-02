@@ -4,5 +4,6 @@ metadata:
   name: airwavetech-helloworld-svc
 spec:
   ports:
-  - name: http
-    port: 5000
+  - port 4997
+    $patch: delete
+  - port: 5000
