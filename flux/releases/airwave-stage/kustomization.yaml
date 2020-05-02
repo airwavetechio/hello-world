@@ -1,6 +1,6 @@
-namespace: airwave-stage
 bases:
   - ../base
+namespace: airwave-stage
 patches:
 - service.yaml
 - deployment.yaml
