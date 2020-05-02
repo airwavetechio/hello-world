@@ -1,3 +1,6 @@
 bases:
   - ../base
 namespace: airwave-stage
+patches:
+  - configmap.yaml
+
