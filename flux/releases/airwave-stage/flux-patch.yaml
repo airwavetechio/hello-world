@@ -1,5 +1,5 @@
 resources:
-  - ./../base
+  - ./../base/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -7,7 +7,7 @@ metadata:
   namespace: airwave-stage
 ---
 resources:
-  - ./../base
+  - ./../base/deploymeny.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
