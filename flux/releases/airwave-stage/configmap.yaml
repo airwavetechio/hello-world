@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: hello-world-configmap
 data:
-  AIRWAVE_HW_PORT: '4998'
+  AIRWAVE_HW_PORT: '5000'
