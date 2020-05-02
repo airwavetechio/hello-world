@@ -1,3 +1,4 @@
+namespace: airwave-stage
 bases:
   - ../base
 patches:
