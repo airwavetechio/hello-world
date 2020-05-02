@@ -6,6 +6,10 @@ patches:
       kind: Service
       name: airwavetech-helloworld-svc
     path: service.yaml
+  - target:
+      kind: ConfigMap
+      name: hello-world-configmap
+    path: configmap.yaml
 
 
 
