@@ -8,3 +8,4 @@ spec:
     $patch: delete
   - name: http  
     port: 5000
+    targetPort: 4998

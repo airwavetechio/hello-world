@@ -17,7 +17,7 @@ This hello world application is a node app that has been "dockerized". The purpo
 
 ```
 kubectl create ns flux
-fluxctl install --generate-manifest=true --git-user=airwavetechio --git-email=tony@airwavetech.io --git-url=git@github.com:airwavetechio/hello-world --git-path=flux/releases/namespaces,flux/releases/airwave-stage --git-branch master --namespace=flux | kubectl apply -f -
+fluxctl install --manifest-generation=true --git-user=airwavetechio --git-email=tony@airwavetech.io --git-url=git@github.com:airwavetechio/hello-world --git-path=flux/releases/namespaces,flux/releases/airwave-stage --git-branch master --namespace=flux | kubectl apply -f -
 ```
 
 
