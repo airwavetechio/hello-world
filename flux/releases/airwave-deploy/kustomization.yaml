@@ -1,5 +1,5 @@
 bases:
-  - ..\base
+  - ../base
 patches:
 - service.yaml
 - deployment.yaml
