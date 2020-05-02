@@ -15,21 +15,20 @@ This hello world application is a node app that has been "dockerized". The purpo
 ## For GitOps
 ### Install Flux into your cluster
 
-### Linux / Mac
 ```
 kubectl create ns flux
-export GHUSER=githubusername 
-fluxctl install --git-user=${GHUSER} --git-email=${GHUSER}@users.noreply.github.com --git-url=git@github.com:${GHUSER}/hello-world --git-path=flux --namespace=flux | kubectl apply -f -
-fluxctl identity --k8s-fwd-ns flux
-Then copy the deploy key to your repo
-fluxctl --k8s-fwd-ns flux sync
+fluxctl install --generate-manifest=true --git-user=airwavetechio --git-email=tony@airwavetech.io --git-url=git@github.com:airwavetechio/hello-world --git-path=flux/releases/namespaces,flux/releases/airwave-stage --git-branch master --namespace=flux | kubectl apply -f -
 ```
 
 
-### Windows 
-kubectl create ns flux
-set GHUSER=githubusername 
-fluxctl install --manifest-generation=true --git-user=%GHUSER% --git-email=%GHUSER%@users.noreply.github.com --git-url=git@github.com:%GHUSER%/hello-world --git-path=flux --namespace=flux | kubectl apply -f -
-fluxctl identity --k8s-fwd-ns flux
-Then copy the deploy key to your repo
-fluxctl --k8s-fwd-ns flux sync
+
+## Knative
+With Knative installed...
+`kubectl apply -f knative-service.yml`
+
+
+
+## Skaffold
+`skaffold dev` OR
+`skaffold run`
+
