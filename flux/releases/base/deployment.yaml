@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airwavetechio-hello-world-deployment
+  labels:
+    app: airwavetech-helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: airwavetech-helloworld
+  template:
+    metadata:
+      labels:
+        app: airwavetech-helloworld
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    spec:
+      containers:
+      - name: hello-world
+        image: airwavetechio/hello-world:latest
+        env:
+        - name: "AIRWAVE_HW_PORT"
+          valueFrom:
+            configMapKeyRef:
+              name: hello-world-configmap
+              key: AIRWAVE_HW_PORT
+        ports:
+        - containerPort: 4998
+          name: liveness-port
+        livenessProbe:
+          httpGet:
+            path: /
+            port: liveness-port
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: liveness-port
+          initialDelaySeconds: 3
+          periodSeconds: 5

@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: airwavetech-helloworld-svc
+  labels:
+    app: airwavetech-helloworld
+spec:
+  ports:
+  - name: http
+    port: 4999
+    targetPort: 4998
+  selector:
+    app: airwavetech-helloworld
