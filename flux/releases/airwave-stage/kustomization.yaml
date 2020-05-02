@@ -2,5 +2,10 @@ bases:
   - ../base
 namespace: airwave-stage
 patches:
-  - configmap.yaml
+  - target: 
+      kind: Service
+      name: airwavetech-helloworld-svc
+    path: service.yaml
+
+
 
