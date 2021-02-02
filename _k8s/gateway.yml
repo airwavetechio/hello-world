@@ -22,7 +22,7 @@ spec:
   hosts:
   - "*"
   gateways:
-  - airwavetech-helloworld-gateway.istio-system.svc.cluster.local
+  - istio-system/airwavetech-helloworld-gateway
   http:
   - match:
     - uri:
